@@ -7,6 +7,9 @@ class Inventory:
 	def add_item(self, item):
 		self.totalinventory.append(item)
 
+	def remove_item(self, item):
+		self.totalinventory.remove(item)
+
 	def __str__(self):
 		return "{}\n=====\n{}\nValue: {}\n".format(self.name, self.description, self.totalinventory)
 

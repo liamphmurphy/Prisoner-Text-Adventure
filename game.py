@@ -26,11 +26,29 @@ def cell(player):
 		if cmd == '1':
 			if 'Guard Key' in player.totalinventory:
 				print("Successfully picked the lock with the Guard Key.")
+				time.sleep(2)
+				print("You are now out of the cell, and make a dash for the near by armory.")
+				time.sleep(1)
+				player.remove_item('Guard Key')
+				armory(player)
 			else:
 				time.sleep(1)
 				print("You do not have a key, time to try something else.")
 				time.sleep(2)
 				cell(player)
+
+	if cmd == '2':
+		print("You see all of the days you have tallied since arriving at the prison: 95 days.")
+		time.sleep(1)
+		print("Some of the stone is loose, but you doubt at this point anything can be done here.")
+		time.sleep(2)
+		print("1: Return.")
+		print("2: Try prying the stones apart.")
+		cmdlist = ['1','2']
+		cmd = getcmd(cmdlist)
+
+		if cmd == '1':
+			cell(player)
 
 	if cmd == '3':
 		print("You see a guard with a set of keys jingling from his belt.")
@@ -53,7 +71,7 @@ def cell(player):
 			cmd = getcmd(cmdlist)
             
 			if cmd =='1':
-				print("The guard sighs once more, throwing his hands up in disbelief. And mutters 'Idiot...'")
+				print("The guard sighs, throwing his hands up in disbelief. And mutters under his breath 'Idiot...'")
 				cell(player)
 			if cmd == '2':
 				print("\nYou successfully knock the guard unconscious, and are able to grab his keys.")
@@ -62,7 +80,13 @@ def cell(player):
 				print("You have obtained: Guard Key")
 				time.sleep(1)
 				cell(player)
-                
+
+def armory(player):
+	print('\n')
+	print('Current inventory: ', player.totalinventory)
+	print('\n')
+	print('---PRISON ARMORY---')
+
 
 def getcmd(cmdlist):
 	cmd = input("Enter your choice: ")
